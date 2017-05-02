@@ -41,13 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lv.setAdapter(arrayAdapter);
 
         btnRunTest = (Button) findViewById(R.id.run_test_button);
-
         btnRunTest.setOnClickListener(MainActivity.this);
 
     }
 
-
-    @Override
     public void onClick(View v) {
 
         if(v.getId() == R.id.run_test_button)
@@ -74,8 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
-
     private void CreateUiLoadingActivity()
     {
         Intent intent = new Intent(this, FillListViewTestActivity.class);
@@ -84,18 +79,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void CreateWhileTestActivity()
     {
-        Intent intent = new Intent(this, FillListViewTestActivity.class);
+        Intent intent = new Intent(this, BigWhileTestActivity.class);
         startActivity(intent);
     }
     private void CreateDatabaseOperations()
     {
-        Intent intent = new Intent(this, FillListViewTestActivity.class);
+        Intent intent = new Intent(this, DatabaseOperationsTestActivity.class);
         startActivity(intent);
     }
 
     private void CreateVideoClipConvertActivity()
     {
-        Intent intent = new Intent(this, FillListViewTestActivity.class);
+        Intent intent = new Intent(this, ConvertVideoClipTestActivity.class);
         startActivity(intent);
     }
 }

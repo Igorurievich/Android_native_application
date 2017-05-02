@@ -6,4 +6,11 @@
     <string name="test_name_convert_video_clip">Konwersja filmiku</string>
     <string name="label_choose_test">Wybierz rodzaj testów:</string>
     <string name="label_button_run_test">Uruchomić test</string>
+    <string name="label_button_run_while">Start pętli</string>
+    <string name="while_count_message_input">Wpisz wielkość pętli:</string>
+    <string name="start_new_tests_series_with_while_btn_label">Uruchomić ponownie</string>
+    <string name="first_while_test_result_label_text">Pierwszy test:</string>
+    <string name="second_while_test_result_label_text">Drugi test:</string>
+    <string name="third_while_test_result_label_text">Trzeci test:</string>
+    <string name="average_while_test_result_label_text">Średnia:</string>
     </resources>

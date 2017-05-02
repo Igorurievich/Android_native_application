@@ -32,6 +32,5 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="5dp"
         android:text="@string/label_button_run_test"
-        android:id="@+id/run_test_button"
-        />
+        android:id="@+id/run_test_button"/>
 </RelativeLayout>
