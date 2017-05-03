@@ -13,4 +13,7 @@
     <string name="second_while_test_result_label_text">Drugi test:</string>
     <string name="third_while_test_result_label_text">Trzeci test:</string>
     <string name="average_while_test_result_label_text">Średnia:</string>
+    <string name="inserting_records_dbtest_time_label_text">Czas wstawiania recordów: </string>
+    <string name="updating_records_dbtest_time_label_text">Czas aktualizacji rekordów: </string>
+    <string name="deleting_records_dbtest_time_label_text">Czas usuniencia rekordów: </string>
     </resources>
