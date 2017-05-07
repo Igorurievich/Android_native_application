@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/prepare_files_for_zip_tests"
+        android:title="@string/menu_item_prepare_data_to_zip_tests"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/clear_generated_files"
+        android:title="@string/menu_item_clear_all_generated_files_after_test"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/clear_all_files"
+        android:title="@string/menu_item_clear_all_files_after_test"
+        app:showAsAction="never"/>
+</menu>

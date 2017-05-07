@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void CreateVideoClipConvertActivity()
     {
-        Intent intent = new Intent(this, ConvertVideoClipTestActivity.class);
+        Intent intent = new Intent(this, CompressFilesTestActivity.class);
         startActivity(intent);
     }
 }
