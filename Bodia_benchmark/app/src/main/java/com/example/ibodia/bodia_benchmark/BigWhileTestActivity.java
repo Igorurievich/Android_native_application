@@ -35,7 +35,7 @@ public class BigWhileTestActivity extends AppCompatActivity implements View.OnCl
         thirdResultText = (TextView) findViewById(R.id.third_while_test_result);
         averageTimeResultText = (TextView) findViewById(R.id.arithmetic_main);
 
-        btnRunWhileTest = (Button) findViewById(R.id.run_while_test_button);
+        btnRunWhileTest = (Button) findViewById(R.id.run_compress_test_button);
         btnRunWhileTest.setOnClickListener(BigWhileTestActivity.this);
 
     }
