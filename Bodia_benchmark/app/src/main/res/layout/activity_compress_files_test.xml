@@ -54,7 +54,6 @@
                     android:fontFamily="sans-serif-medium"
                     android:textSize="18sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,7 +76,6 @@
                     android:fontFamily="sans-serif-medium"
                     android:textSize="18sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

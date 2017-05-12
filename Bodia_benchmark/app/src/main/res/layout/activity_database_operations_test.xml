@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
@@ -15,69 +15,91 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <LinearLayout
-        android:layout_marginTop="15dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <TextView
-                android:layout_margin="5dp"
-                android:text="@string/inserting_records_dbtest_time_label_text"
                 android:id="@+id/first_while_test_result_label"
                 android:layout_width="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                android:layout_height="wrap_content" />
-            <TextView
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:id="@+id/first_while_test_result"
-                android:layout_width="match_parent"
                 android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                android:layout_height="wrap_content" />
+                android:text="@string/first_while_test_result_label_text"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/first_compressing_test_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp" />
         </LinearLayout>
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <TextView
-                android:text="@string/updating_records_dbtest_time_label_text"
-                android:layout_margin="5dp"
                 android:id="@+id/second_while_test_result_label"
                 android:layout_width="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                android:layout_height="wrap_content" />
-            <TextView
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:id="@+id/second_while_test_result"
-                android:layout_width="match_parent"
                 android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                android:layout_height="wrap_content" />
+                android:text="@string/second_while_test_result_label_text"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/second_compressing_test_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp" />
         </LinearLayout>
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <TextView
-                android:text="@string/deleting_records_dbtest_time_label_text"
-                android:layout_margin="5dp"
                 android:id="@+id/third_while_test_result_label"
                 android:layout_width="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                android:layout_height="wrap_content" />
-            <TextView
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:id="@+id/third_while_test_result"
-                android:layout_width="match_parent"
                 android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                android:layout_height="wrap_content" />
+                android:text="@string/third_while_test_result_label_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/third_compressing_test_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/arithmetic_main_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/average_while_test_result_label_text"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/arithmetic_main_compressing_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</TableLayout>
