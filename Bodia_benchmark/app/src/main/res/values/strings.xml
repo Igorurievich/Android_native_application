@@ -22,5 +22,5 @@
     <string name="start_uncompressing_files_btn">Zacząć rozpakowanie</string>
     <string name="menu_item_prepare_data_to_zip_tests">Przygotować pliki do testów</string>
     <string name="menu_item_clear_all_generated_files_after_test">Usunąć wygenerowane pliki</string>
-    <string name="menu_item_clear_all_files_after_test">Usunąć wszystkie pliki</string>
+    <string name="menu_item_clear_all_files_after_test">Usunąć wszystkie pliki i wyjść</string>
     </resources>

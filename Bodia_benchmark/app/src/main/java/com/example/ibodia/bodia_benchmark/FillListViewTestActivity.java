@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,10 @@ public class FillListViewTestActivity extends ListActivity implements View.OnCli
     }
 
     public void onClick(View view) {
+        if (editTextWhileCount.getText() == null || editTextWhileCount.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Wpisz odpowiednią liczbę", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (testNumber < 3) {
             editTextWhileCount.setEnabled(false);
             double elapsedTime = EraseDynamiclyItemsInserting(Long.parseLong(editTextWhileCount.getText().toString()));

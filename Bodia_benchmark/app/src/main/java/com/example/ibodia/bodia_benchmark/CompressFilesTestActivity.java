@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ibodia.bodia_benchmark.CompressHelpers.UnZipUtility;
 import com.example.ibodia.bodia_benchmark.CompressHelpers.ZipUtility;
@@ -52,6 +53,7 @@ public class CompressFilesTestActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.clear_all_files:
                 DeleteRecursive(new File(getFilesDir().getAbsolutePath()));
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

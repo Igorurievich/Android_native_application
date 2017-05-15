@@ -40,6 +40,11 @@ public class BigWhileTestActivity extends AppCompatActivity {
 
     public void onStartTestClick(View v)
     {
+        if (editTextWhileCount.getText() == null || editTextWhileCount.getText().toString().isEmpty()){
+            Toast.makeText(this, "Wpisz odpowiednią liczbę", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         if (testNumber < 3) {
             editTextWhileCount.setEnabled(false);
             double elapsedTime = EraseWhile(Long.parseLong(editTextWhileCount.getText().toString()));
@@ -64,7 +69,6 @@ public class BigWhileTestActivity extends AppCompatActivity {
             editTextWhileCount.setEnabled(true);
         }
     }
-
 
     private double EraseWhile(long count) {
         long tStart = System.currentTimeMillis();

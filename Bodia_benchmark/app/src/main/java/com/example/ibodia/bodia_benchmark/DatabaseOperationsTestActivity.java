@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ibodia.bodia_benchmark.DbHelpers.DatabaseManager;
 import com.example.ibodia.bodia_benchmark.DbHelpers.UserData;
@@ -47,15 +48,18 @@ public class DatabaseOperationsTestActivity extends AppCompatActivity {
         btnRunDBTest = (Button) findViewById(R.id.run_db_test_button);
     }
 
-    public void onStartTestClick(View v)
-    {
+    public void onStartTestClick(View v) {
+        if (inputedRecordsCount.getText() == null || inputedRecordsCount.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Wpisz odpowiednią liczbę", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (testNumber < 3) {
             inputedRecordsCount.setEnabled(false);
             EraseDatabaseTest(Long.parseLong(inputedRecordsCount.getText().toString()));
             testNumber++;
             FillResults(testNumber);
         }
-        if (testNumber==3){
+        if (testNumber == 3) {
 //            double average = (Double.parseDouble(firstResultText.getText().toString()) +
 //                    Double.parseDouble(secondResultText.getText().toString()) +
 //                    Double.parseDouble(thirdResultText.getText().toString())) / 3;
@@ -65,8 +69,7 @@ public class DatabaseOperationsTestActivity extends AppCompatActivity {
             return;
         }
 
-        if (btnRunDBTest.getText() == getResources().getString(R.string.start_new_tests_series_with_while_btn_label))
-        {
+        if (btnRunDBTest.getText() == getResources().getString(R.string.start_new_tests_series_with_while_btn_label)) {
             btnRunDBTest.setText(R.string.label_button_run_while);
             ClearTestsResults();
             testNumber = 0;
