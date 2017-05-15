@@ -3,12 +3,13 @@
     <string name="test_name_ui_loading">Dynamiczne ładowanie ListView</string>
     <string name="test_name_database_operations">Operacji z bazą danych</string>
     <string name="test_name_start_big_while">Wywołanie pętli</string>
-    <string name="test_name_convert_video_clip">Konwersja filmiku</string>
+    <string name="test_name_convert_video_clip">Archiwizacja plików</string>
     <string name="label_choose_test">Wybierz rodzaj testów:</string>
     <string name="label_button_run_test">Uruchomić test</string>
-    <string name="label_button_run_while">Start pętli</string>
+    <string name="label_button_run_while">Start</string>
     <string name="label_button_run_comress_test">Start testu</string>
     <string name="while_count_message_input">Wpisz wielkość pętli:</string>
+    <string name="records_count_message_input">Wpisz iłość rekordów:</string>
     <string name="start_new_tests_series_with_while_btn_label">Uruchomić ponownie</string>
     <string name="first_while_test_result_label_text">Pierwszy test:</string>
     <string name="second_while_test_result_label_text">Drugi test:</string>

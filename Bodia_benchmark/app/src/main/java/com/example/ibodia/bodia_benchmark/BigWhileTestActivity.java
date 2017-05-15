@@ -14,7 +14,7 @@ import android.widget.Toast;
  * Created by ibodia on 5/1/2017.
  */
 
-public class BigWhileTestActivity extends AppCompatActivity implements View.OnClickListener {
+public class BigWhileTestActivity extends AppCompatActivity {
 
     EditText editTextWhileCount;
     TextView firstResultText;
@@ -35,12 +35,10 @@ public class BigWhileTestActivity extends AppCompatActivity implements View.OnCl
         thirdResultText = (TextView) findViewById(R.id.third_while_test_result);
         averageTimeResultText = (TextView) findViewById(R.id.arithmetic_main);
 
-        btnRunWhileTest = (Button) findViewById(R.id.run_compress_test_button);
-        btnRunWhileTest.setOnClickListener(BigWhileTestActivity.this);
-
+        btnRunWhileTest = (Button) findViewById(R.id.run_while_test_btn);
     }
 
-    public void onClick(View v)
+    public void onStartTestClick(View v)
     {
         if (testNumber < 3) {
             editTextWhileCount.setEnabled(false);

@@ -9,7 +9,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/ormlite-android-4.45" />
             <option value="$PROJECT_DIR$/ormlite-android-5.0" />
+            <option value="$PROJECT_DIR$/ormlite-core-4.45" />
             <option value="$PROJECT_DIR$/ormlite-core-5.0" />
           </set>
         </option>

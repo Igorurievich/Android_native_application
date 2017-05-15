@@ -78,7 +78,6 @@ public class FillListViewTestActivity extends ListActivity implements View.OnCli
     private double EraseDynamiclyItemsInserting(long count) {
         long tStart = System.currentTimeMillis();
         ArrayAdapter<String> adapter = (ArrayAdapter<String>) getListAdapter();
-        List myList = new ArrayList();
         for (long i = 0; i < count; i++) {
             String device = "Item: " + Long.toString(i);
             adapter.add(device);

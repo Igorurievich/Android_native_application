@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <Button
-        android:text="Insert records"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:text="Update records"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:text="Delete records"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical">
+        <TextView
+            android:text="@string/records_count_message_input"
+            android:layout_width="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/input_records_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +31,7 @@
                 android:text="@string/first_while_test_result_label_text"
                 android:textSize="18sp" />
             <TextView
-                android:id="@+id/first_compressing_test_result"
+                android:id="@+id/first_db_test_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -52,7 +51,7 @@
                 android:text="@string/second_while_test_result_label_text"
                 android:textSize="18sp" />
             <TextView
-                android:id="@+id/second_compressing_test_result"
+                android:id="@+id/second_db_test_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -63,7 +62,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <TextView
                 android:id="@+id/third_while_test_result_label"
                 android:layout_width="wrap_content"
@@ -72,9 +70,8 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/third_while_test_result_label_text"
                 android:textSize="18sp" />
-
             <TextView
-                android:id="@+id/third_compressing_test_result"
+                android:id="@+id/third_db_test_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -94,7 +91,7 @@
                 android:text="@string/average_while_test_result_label_text"
                 android:textSize="18sp" />
             <TextView
-                android:id="@+id/arithmetic_main_compressing_test"
+                android:id="@+id/arithmetic_main_db_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -102,4 +99,12 @@
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dp"
+            android:text="@string/label_button_run_while"
+            android:onClick="onStartTestClick"
+            android:id="@+id/run_db_test_button"/>
 </TableLayout>

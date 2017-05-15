@@ -17,35 +17,44 @@ public class UserData {
     @DatabaseField(generatedId = true)
     int id;
     @DatabaseField(index = true)
-    String string;
+    String Name;
     @DatabaseField
-    long millis;
+    String Surname;
     @DatabaseField
-    Date date;
-    @DatabaseField
-    boolean even;
+    Date BirthDate;
 
     UserData() {
         // needed by ormlite
     }
 
-    public UserData(long millis) {
-        this.date = new Date(millis);
-        this.string = (millis % 1000) + "ms";
-        this.millis = millis;
-        this.even = ((millis % 2) == 0);
+    public UserData(String name, String surname, Date birthDate)
+    {
+        Name = name;
+        Surname = surname;
+        BirthDate = birthDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setName(String name)
+    {
+        Name = name;
+    }
+
+    public void setSurname(String surname)
+    {
+        Surname = surname;
+    }
+    public void setBirthDate(Date birthDate)
+    {
+        BirthDate = birthDate;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("id=").append(id);
-        sb.append(", ").append("str=").append(string);
-        sb.append(", ").append("ms=").append(millis);
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
-        sb.append(", ").append("date=").append(dateFormatter.format(date));
-        sb.append(", ").append("even=").append(even);
-        return sb.toString();
+        return Name;
     }
 }
 

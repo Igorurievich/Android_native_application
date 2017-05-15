@@ -1,15 +1,18 @@
 package com.example.ibodia.bodia_benchmark;
 
-import java.util.List;
-import java.util.Random;
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ibodia.bodia_benchmark.DbHelpers.DatabaseManager;
 import com.example.ibodia.bodia_benchmark.DbHelpers.UserData;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by ibodia on 5/1/2017.
@@ -17,63 +20,136 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 public class DatabaseOperationsTestActivity extends AppCompatActivity {
 
-    private final String LOG_TAG = getClass().getSimpleName();
-    private final static int MAX_NUM_TO_CREATE = 8;
+    EditText inputedRecordsCount;
+    TextView firstResultText;
+    TextView secondResultText;
+    TextView thirdResultText;
+    TextView averageTimeResultText;
+    Button btnRunDBTest;
+
+    private int testNumber = 0;
+
+    double inseringTime;
+    double updatingTime;
+    double deletingTime;
+
 
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_database_operations_test);
+        DatabaseManager.init(this);
+
+        inputedRecordsCount =  (EditText) findViewById(R.id.input_records_count);
+        firstResultText = (TextView) findViewById(R.id.first_db_test_result);
+        secondResultText = (TextView) findViewById(R.id.second_db_test_result);
+        thirdResultText = (TextView) findViewById(R.id.third_db_test_result);
+        averageTimeResultText = (TextView) findViewById(R.id.arithmetic_main_db_test);
+        btnRunDBTest = (Button) findViewById(R.id.run_db_test_button);
     }
 
-    private void doSampleDatabaseStuff(String action, TextView tv) {
-        // get our dao
-        RuntimeExceptionDao<UserData, Integer> simpleDao = getHelper().getSimpleDataDao();
-        // query for all of the data objects in the database
-        List<UserData> list = simpleDao.queryForAll();
-        // our string builder for building the content-view
-        StringBuilder sb = new StringBuilder();
-        sb.append("Found ").append(list.size()).append(" entries in DB in ").append(action).append("()\n");
-
-        // if we already have items in the database
-        int simpleC = 1;
-        for (UserData simple : list) {
-            sb.append('#').append(simpleC).append(": ").append(simple).append('\n');
-            simpleC++;
+    public void onStartTestClick(View v)
+    {
+        if (testNumber < 3) {
+            inputedRecordsCount.setEnabled(false);
+            EraseDatabaseTest(Long.parseLong(inputedRecordsCount.getText().toString()));
+            testNumber++;
+            FillResults(testNumber);
         }
-        sb.append("------------------------------------------\n");
-        sb.append("Deleted ids:");
-        for (UserData simple : list) {
-            simpleDao.delete(simple);
-            sb.append(' ').append(simple.id);
-            Log.i(LOG_TAG, "deleting simple(" + simple.id + ")");
-            simpleC++;
-        }
-        sb.append('\n');
-        sb.append("------------------------------------------\n");
-
-        int createNum;
-        do {
-            createNum = new Random().nextInt(MAX_NUM_TO_CREATE) + 1;
-        } while (createNum == list.size());
-        sb.append("Creating ").append(createNum).append(" new entries:\n");
-        for (int i = 0; i < createNum; i++) {
-            // create a new simple object
-            long millis = System.currentTimeMillis();
-            UserData simple = new UserData(millis);
-            // store it in the database
-            simpleDao.create(simple);
-            Log.i(LOG_TAG, "created simple(" + millis + ")");
-            // output it
-            sb.append('#').append(i + 1).append(": ");
-            sb.append(simple).append('\n');
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                // ignore
-            }
+        if (testNumber==3){
+//            double average = (Double.parseDouble(firstResultText.getText().toString()) +
+//                    Double.parseDouble(secondResultText.getText().toString()) +
+//                    Double.parseDouble(thirdResultText.getText().toString())) / 3;
+//            averageTimeResultText.setText(Double.toString(average));
+            btnRunDBTest.setText(R.string.start_new_tests_series_with_while_btn_label);
+            testNumber++;
+            return;
         }
 
-        tv.setText(sb.toString());
-        Log.i(LOG_TAG, "Done with page at " + System.currentTimeMillis());
+        if (btnRunDBTest.getText() == getResources().getString(R.string.start_new_tests_series_with_while_btn_label))
+        {
+            btnRunDBTest.setText(R.string.label_button_run_while);
+            ClearTestsResults();
+            testNumber = 0;
+            inputedRecordsCount.setEnabled(true);
+        }
+    }
+
+    private void FillResults(int numberOfTest)
+    {
+        switch (numberOfTest) {
+            case 1:
+                firstResultText.setText(Double.toString(inseringTime)+", "+Double.toString(updatingTime)+", "+Double.toString(deletingTime));
+                break;
+            case 2:
+                secondResultText.setText(Double.toString(inseringTime)+", "+Double.toString(updatingTime)+", "+Double.toString(deletingTime));
+                break;
+            case 3:
+                thirdResultText.setText(Double.toString(inseringTime)+", "+Double.toString(updatingTime)+", "+Double.toString(deletingTime));
+                break;
+        }
+    }
+
+    private void ClearTestsResults()
+    {
+        firstResultText.setText(" ");
+        secondResultText.setText(" ");
+        thirdResultText.setText(" ");
+        averageTimeResultText.setText(" ");
+    }
+
+    public double InsertUsers(long recordsCount)
+    {
+        long tStart = System.currentTimeMillis();
+        for(int i = 0; i < recordsCount; i++)
+        {
+            String name = UUID.randomUUID().toString();
+            String surname = UUID.randomUUID().toString();
+            DatabaseManager.getInstance().addUser(new UserData(name, surname , new Date()));
+        }
+        long tEnd = System.currentTimeMillis();
+        long tDelta = tEnd - tStart;
+        return tDelta / 1000.0;
+    }
+
+    public double UpdateUsers()
+    {
+        ArrayList<UserData> userArrayList = DatabaseManager.getInstance().getAllUsers();
+
+        long tStart = System.currentTimeMillis();
+        for(int i = 0; i < userArrayList.size(); i++) {
+            String name = UUID.randomUUID().toString();
+            String surname = UUID.randomUUID().toString();
+
+            UserData userData = userArrayList.get(i);
+
+            userData.setBirthDate(new Date());
+            userData.setSurname(surname);
+            userData.setName(name);
+
+            DatabaseManager.getInstance().updateUser(userData);
+        }
+        long tEnd = System.currentTimeMillis();
+        long tDelta = tEnd - tStart;
+        return tDelta / 1000.0;
+    }
+
+    public double DeletingUsers()
+    {
+        ArrayList<UserData> userArrayList = DatabaseManager.getInstance().getAllUsers();
+        long tStart = System.currentTimeMillis();
+        for(int i = userArrayList.get(0).getId(); i < userArrayList.size()+ userArrayList.get(0).getId(); i++)
+        {
+            DatabaseManager.getInstance().deleteUser(i);
+        }
+        long tEnd = System.currentTimeMillis();
+        long tDelta = tEnd - tStart;
+        return tDelta / 1000.0;
+    }
+
+    public void EraseDatabaseTest(long recordsCount)
+    {
+        inseringTime = InsertUsers(recordsCount);
+        updatingTime = UpdateUsers();
+        deletingTime = DeletingUsers();
     }
 }
