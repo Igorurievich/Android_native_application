@@ -34,6 +34,10 @@ public class DatabaseOperationsTestActivity extends AppCompatActivity {
     double updatingTime;
     double deletingTime;
 
+    double averageInseringTime;
+    double averageUpdatingTime;
+    double averageDeletingTime;
+
 
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -50,7 +54,7 @@ public class DatabaseOperationsTestActivity extends AppCompatActivity {
 
     public void onStartTestClick(View v) {
         if (inputedRecordsCount.getText() == null || inputedRecordsCount.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Wpisz odpowiednią liczbę", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.message_inser_valid_count, Toast.LENGTH_LONG).show();
             return;
         }
         if (testNumber < 3) {
@@ -58,14 +62,17 @@ public class DatabaseOperationsTestActivity extends AppCompatActivity {
             EraseDatabaseTest(Long.parseLong(inputedRecordsCount.getText().toString()));
             testNumber++;
             FillResults(testNumber);
+            averageInseringTime = averageInseringTime +inseringTime;
+            averageUpdatingTime = averageUpdatingTime + updatingTime;
+            averageDeletingTime = averageDeletingTime+ deletingTime;
         }
         if (testNumber == 3) {
-//            double average = (Double.parseDouble(firstResultText.getText().toString()) +
-//                    Double.parseDouble(secondResultText.getText().toString()) +
-//                    Double.parseDouble(thirdResultText.getText().toString())) / 3;
-//            averageTimeResultText.setText(Double.toString(average));
+            averageTimeResultText.setText(Double.toString(averageInseringTime/3)+", "+Double.toString(averageUpdatingTime/3)+", "+Double.toString(averageDeletingTime/3));
             btnRunDBTest.setText(R.string.start_new_tests_series_with_while_btn_label);
             testNumber++;
+            averageInseringTime = 0;
+            averageUpdatingTime = 0;
+            averageDeletingTime = 0;
             return;
         }
 

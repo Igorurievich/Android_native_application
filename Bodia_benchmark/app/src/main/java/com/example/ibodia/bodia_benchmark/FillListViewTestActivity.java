@@ -1,15 +1,11 @@
 package com.example.ibodia.bodia_benchmark;
 
 import android.app.ListActivity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +48,7 @@ public class FillListViewTestActivity extends ListActivity implements View.OnCli
 
     public void onClick(View view) {
         if (editTextWhileCount.getText() == null || editTextWhileCount.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Wpisz odpowiednią liczbę", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.message_inser_valid_count, Toast.LENGTH_LONG).show();
             return;
         }
         if (testNumber < 3) {

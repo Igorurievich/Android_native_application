@@ -28,11 +28,6 @@ public class DatabaseManager {
         return helper;
     }
 
-    /**
-     * Get all customer in db
-     *
-     * @return
-     */
     public ArrayList<UserData> getAllUsers() {
         ArrayList<UserData> cats = null;
         try {

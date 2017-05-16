@@ -41,7 +41,7 @@ public class BigWhileTestActivity extends AppCompatActivity {
     public void onStartTestClick(View v)
     {
         if (editTextWhileCount.getText() == null || editTextWhileCount.getText().toString().isEmpty()){
-            Toast.makeText(this, "Wpisz odpowiednią liczbę", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.message_inser_valid_count, Toast.LENGTH_LONG).show();
             return;
         }
 
