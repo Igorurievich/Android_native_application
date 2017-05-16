@@ -9,6 +9,7 @@
     <string name="label_button_run_while">Start</string>
     <string name="label_button_run_comress_test">Start testu</string>
     <string name="while_count_message_input">Wpisz wielkość pętli:</string>
+    <string name="items_count_message_input">Wpisz iłość elementów:</string>
     <string name="records_count_message_input">Wpisz iłość rekordów:</string>
     <string name="start_new_tests_series_with_while_btn_label">Uruchomić ponownie</string>
     <string name="first_while_test_result_label_text">Pierwszy test:</string>

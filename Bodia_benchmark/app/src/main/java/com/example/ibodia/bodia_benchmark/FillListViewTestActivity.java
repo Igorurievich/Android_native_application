@@ -64,6 +64,7 @@ public class FillListViewTestActivity extends ListActivity implements View.OnCli
             averageTimeResultText.setText(Double.toString(average));
             btnRunListViewTest.setText(R.string.start_new_tests_series_with_while_btn_label);
             testNumber++;
+            ClearListView();
             return;
         }
 
@@ -88,6 +89,13 @@ public class FillListViewTestActivity extends ListActivity implements View.OnCli
         long tDelta = tEnd - tStart;
         return tDelta / 1000.0;
     }
+    private void ClearListView()
+    {
+        ArrayAdapter<String> adapter = (ArrayAdapter<String>) getListAdapter();
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+    }
+
     private void ClearTestsResults()
     {
         firstResultText.setText(" ");
