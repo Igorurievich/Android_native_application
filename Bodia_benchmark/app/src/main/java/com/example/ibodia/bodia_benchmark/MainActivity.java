@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         your_array_list.add(res.getString(R.string.test_name_ui_loading));
         your_array_list.add(res.getString(R.string.test_name_database_operations));
         your_array_list.add(res.getString(R.string.test_name_start_big_while));
-        your_array_list.add(res.getString(R.string.test_name_convert_video_clip));
+        your_array_list.add(res.getString(R.string.test_name_compress_files));
 
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             {
                 CreateDatabaseOperations();
             }
-            else if (selectedTeststring == getString(R.string.test_name_convert_video_clip))
+            else if (selectedTeststring == getString(R.string.test_name_compress_files))
             {
                 CreateVideoClipConvertActivity();
             }
