@@ -38,7 +38,6 @@ public class DatabaseOperationsTestActivity extends AppCompatActivity {
     double averageUpdatingTime;
     double averageDeletingTime;
 
-
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_database_operations_test);

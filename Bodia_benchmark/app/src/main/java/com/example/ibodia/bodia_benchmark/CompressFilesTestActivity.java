@@ -67,8 +67,8 @@ public class CompressFilesTestActivity extends AppCompatActivity {
     }
 
     private void EraseWhile() {
-       averageCompressTime = compressFiles();
-        averageUnCompressTime = unCompressFiles();
+       compressTime = compressFiles();
+        unCompressTime = unCompressFiles();
     }
 
     public void onStartTestClick(View v)
@@ -108,13 +108,13 @@ public class CompressFilesTestActivity extends AppCompatActivity {
     {
         switch (numberOfTest) {
             case 1:
-                firstResultText.setText(Double.toString(averageCompressTime)+"/"+Double.toString(averageUnCompressTime));
+                firstResultText.setText(Double.toString(compressTime)+"/"+Double.toString(unCompressTime));
                 break;
             case 2:
-                secondResultText.setText(Double.toString(averageCompressTime)+"/"+Double.toString(averageUnCompressTime));
+                secondResultText.setText(Double.toString(compressTime)+"/"+Double.toString(unCompressTime));
                 break;
             case 3:
-                thirdResultText.setText(Double.toString(averageCompressTime)+"/"+Double.toString(averageUnCompressTime));
+                thirdResultText.setText(Double.toString(compressTime)+"/"+Double.toString(unCompressTime));
                 break;
         }
     }
