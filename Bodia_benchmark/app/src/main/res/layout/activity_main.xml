@@ -17,11 +17,8 @@
             android:text="@string/label_choose_test"
             android:id="@+id/tittle_main_activity"/>
         <Spinner
-            style="@style/spinnerDropDownItemStyle"
-            android:fontFamily="sans-serif-medium"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:paddingLeft="10dp"
             android:id="@+id/testsList"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />

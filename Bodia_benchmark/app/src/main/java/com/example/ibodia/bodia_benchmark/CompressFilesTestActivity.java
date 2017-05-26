@@ -33,6 +33,12 @@ public class CompressFilesTestActivity extends AppCompatActivity {
     TextView averageTimeResultText;
     Button btnRunCompressTest;
 
+    double compressTime;
+    double unCompressTime;
+
+    double averageCompressTime;
+    double averageUnCompressTime;
+
     private int testNumber = 0;
 
     public void onCreate(Bundle saveInstanceState) {
@@ -60,36 +66,26 @@ public class CompressFilesTestActivity extends AppCompatActivity {
         }
     }
 
-    private double EraseWhile() {
-        long tStart = System.currentTimeMillis();
-
-        ZipFiles(getFilesDir().getAbsolutePath() + File.separator + "FilesForCompress",
-                getFilesDir().getAbsolutePath() + File.separator + "CompressedFiles.zip");
-        try {
-            UnZipFiles(getFilesDir().getAbsolutePath() + File.separator + "CompressedFiles.zip",
-                    getFilesDir().getAbsolutePath() + File.separator + "UnCompressFiles");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        long tEnd = System.currentTimeMillis();
-        long tDelta = tEnd - tStart;
-        return tDelta / 1000.0;
+    private void EraseWhile() {
+       averageCompressTime = compressFiles();
+        averageUnCompressTime = unCompressFiles();
     }
 
     public void onStartTestClick(View v)
     {
         if (testNumber < 3) {
-            double elapsedTime = EraseWhile();
+            EraseWhile();
             testNumber++;
-            FillResults(testNumber, elapsedTime);
+            FillResults(testNumber);
+            averageCompressTime = averageCompressTime + compressTime;
+            averageUnCompressTime = averageUnCompressTime + unCompressTime;
         }
         if (testNumber==3){
-            double average = (Double.parseDouble(firstResultText.getText().toString()) +
-                    Double.parseDouble(secondResultText.getText().toString()) +
-                    Double.parseDouble(thirdResultText.getText().toString())) / 3;
-            averageTimeResultText.setText(Double.toString(average));
-            btnRunCompressTest.setText(R.string.start_new_tests_series_with_while_btn_label);
+            averageTimeResultText.setText((averageCompressTime / 3) + ", " + (averageUnCompressTime / 3));
+            btnRunCompressTest.setText(getResources().getString(R.string.start_new_tests_series_with_while_btn_label));
             testNumber++;
+            averageCompressTime = 0;
+            averageUnCompressTime = 0;
             return;
         }
         if (btnRunCompressTest.getText() == getResources().getString(R.string.start_new_tests_series_with_while_btn_label))
@@ -108,17 +104,17 @@ public class CompressFilesTestActivity extends AppCompatActivity {
         averageTimeResultText.setText(" ");
     }
 
-    private void FillResults(int numberOfTest, double time)
+    private void FillResults(int numberOfTest)
     {
         switch (numberOfTest) {
             case 1:
-                firstResultText.setText(Double.toString(time));
+                firstResultText.setText(Double.toString(averageCompressTime)+"/"+Double.toString(averageUnCompressTime));
                 break;
             case 2:
-                secondResultText.setText(Double.toString(time));
+                secondResultText.setText(Double.toString(averageCompressTime)+"/"+Double.toString(averageUnCompressTime));
                 break;
             case 3:
-                thirdResultText.setText(Double.toString(time));
+                thirdResultText.setText(Double.toString(averageCompressTime)+"/"+Double.toString(averageUnCompressTime));
                 break;
         }
     }
@@ -150,6 +146,31 @@ public class CompressFilesTestActivity extends AppCompatActivity {
         } catch (IOException ex) {
             Log.e("tag", "I/O Exception", ex);
         }
+    }
+
+    private double compressFiles()
+    {
+        long tStart = System.currentTimeMillis();
+
+        ZipFiles(getFilesDir().getAbsolutePath() + File.separator + "FilesForCompress",
+                getFilesDir().getAbsolutePath() + File.separator + "CompressedFiles.zip");
+        long tEnd = System.currentTimeMillis();
+        long tDelta = tEnd - tStart;
+        return tDelta / 1000.0;
+    }
+
+    private double unCompressFiles()
+    {
+        long tStart = System.currentTimeMillis();
+        try {
+            UnZipFiles(getFilesDir().getAbsolutePath() + File.separator + "CompressedFiles.zip",
+                    getFilesDir().getAbsolutePath() + File.separator + "UnCompressFiles");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        long tEnd = System.currentTimeMillis();
+        long tDelta = tEnd - tStart;
+        return tDelta / 1000.0;
     }
 
     private void copyFile(String filename) {
