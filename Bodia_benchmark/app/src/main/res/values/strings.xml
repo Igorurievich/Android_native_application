@@ -4,6 +4,7 @@
     <string name="test_name_database_operations">Operacji z bazą danych</string>
     <string name="test_name_start_big_while">Wywołanie pętli</string>
     <string name="test_name_compress_files">Archiwizacja plików</string>
+    <string name="test_name_fps_measuring">Działanie aparatu</string>
     <string name="label_choose_test">Wybierz rodzaj testów:</string>
     <string name="label_button_run_test">Uruchomić test</string>
     <string name="label_button_run_while">Start</string>

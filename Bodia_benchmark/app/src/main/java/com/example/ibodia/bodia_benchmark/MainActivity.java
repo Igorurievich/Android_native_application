@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         your_array_list.add(res.getString(R.string.test_name_database_operations));
         your_array_list.add(res.getString(R.string.test_name_start_big_while));
         your_array_list.add(res.getString(R.string.test_name_compress_files));
+        your_array_list.add(res.getString(R.string.test_name_fps_measuring));
 
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
@@ -67,6 +68,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             {
                 CreateVideoClipConvertActivity();
             }
+            else if (selectedTeststring == getString(R.string.test_name_fps_measuring))
+            {
+                CreateFpsMeasuringActivity();
+            }
         }
     }
 
@@ -90,6 +95,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void CreateVideoClipConvertActivity()
     {
         Intent intent = new Intent(this, CompressFilesTestActivity.class);
+        startActivity(intent);
+    }
+
+    private void CreateFpsMeasuringActivity()
+    {
+        Intent intent = new Intent(this, FrameRateCameraTestActivity.class);
         startActivity(intent);
     }
 }
