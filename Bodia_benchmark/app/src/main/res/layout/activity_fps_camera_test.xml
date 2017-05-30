@@ -3,18 +3,6 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
-    <SurfaceView
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="20"
-        android:id="@+id/cameraPreview"/>
-    <TextView
-            android:id="@+id/fps_rate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="5dp"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,18 +12,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/average_fps_value_label"
+                android:id="@+id/fps_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="Average FPS value: "
-                android:layout_margin="5dp"/>
-            <TextView
-                android:id="@+id/min_max_fps_values_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:text="Min/Max FPS values: "
+                android:text="FPS value: "
                 android:layout_margin="5dp"/>
         </LinearLayout>
         <LinearLayout
@@ -43,27 +24,24 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/average_fps_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_margin="5dp"/>
-            <TextView
-                android:id="@+id/min_max_fps_values"
+                android:id="@+id/fps_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_margin="5dp"/>
         </LinearLayout>
-
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
     <Button
         android:id="@+id/start_fps_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:onClick="onClick"
         android:layout_margin="5dp"
         android:text="@string/label_button_run_while"/>
-
+        </LinearLayout>
 </LinearLayout>
